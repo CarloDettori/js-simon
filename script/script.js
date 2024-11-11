@@ -26,25 +26,32 @@ function extractionTrigger() {
     for (let i = 0; i < extractionList.length; i++) {
         extractionBox.innerHTML += `<h2>${extractionList[i]}</h2>`
     }
-    let timer = 10
-
+    let timer = document.getElementById("timer");
+    let timerValue = 10;
+    let formBox = document.getElementById("answers-form")
+    timer.innerHTML = timerValue
     function subtract1Second() {
-        if (timer == 0) {
+        if (timerValue == 0) {
             clearInterval()
+            timer.classList.add("d-none")
+            extractionBox.classList.add("d-none")
+            extractionBox.classList.remove("d-none")
+        } else {
+            timerValue = timerValue - 1
         }
-        timer--
     }
-    setInterval(subtract1Second(), 1000)
+    const timerInterval = setInterval(subtract1Second, 1000)
 }
 extractionButton.addEventListener("click", extractionTrigger)
 
 
 
-console.log(extractionList)
+//console.log(extractionList)
 
 //definizione trigger di scelta dei numeri scelti dall'user
 let submitButton = document.getElementById("submitB");
 let imput = document.querySelectorAll("imput")
+let resultText = document.getElementById("messsage")
 submitButton.addEventListener("click", function (event) {
     for (let i = 0; i < 5; i++)
         userGuessList.push(imput[i].value);
@@ -54,13 +61,13 @@ submitButton.addEventListener("click", function (event) {
             userRightAnsList.push(userGuessList[i])
         }
     }
-
+    resultText.innerHTML = `Hai indovinato ${userRightAnsList.length} numeri!`
 })
-console.log(userGuessList)
+//console.log(userGuessList)
 
 
 
 
-console.log(userRightAnsList);
+//console.log(userRightAnsList);
 
 //class="d-none" tolto da  id="input-group"
