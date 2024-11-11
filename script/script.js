@@ -11,18 +11,33 @@ let userRightAnsList = [];
 // ciclo per definire i numeri estratti
 let extractionButton = document.getElementById("extraction");
 function extractionTrigger() {
+    extractionButton.disabled = true;
+    let extractionBox = document.getElementById("numbers-list")
+    let countdownBox = document.getElementById("countdown")
+    countdownBox.innerHTML = `<h1 id="timer"></h1>`
     while (extractionList.length < 5) {
-        let i = 0
+        let i = 0;
         if (extractionList.includes(userGuessList[i])) {
         } else {
             extractionList.push(generaNumeroRandom(1, 100));
             i++;
         }
     }
-    let extrationBox = document.getElementById("numbers-list")
+    for (let i = 0; i < extractionList.length; i++) {
+        extractionBox.innerHTML += `<h2>${extractionList[i]}</h2>`
+    }
+    let timer = 10
 
+    function subtract1Second() {
+        if (timer == 0) {
+            clearInterval()
+        }
+        timer--
+    }
+    setInterval(subtract1Second(), 1000)
 }
 extractionButton.addEventListener("click", extractionTrigger)
+
 
 
 console.log(extractionList)
@@ -39,6 +54,7 @@ submitButton.addEventListener("click", function (event) {
             userRightAnsList.push(userGuessList[i])
         }
     }
+
 })
 console.log(userGuessList)
 
