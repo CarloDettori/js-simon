@@ -22,5 +22,10 @@ check.addEventListener("click", function (event) {
 })
 console.log(userGuess)
 
+//ciclo per confrontare i numeri scelti con i numeri estratti
+for (let i = 0; i < 5; i++) {
+    if (extration.includes(userGuess[i]))
+        userRightAns.push(userGuess[i])
+}
 
-
+console.log(userRightAns);
