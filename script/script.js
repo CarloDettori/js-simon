@@ -29,3 +29,5 @@ for (let i = 0; i < 5; i++) {
 }
 
 console.log(userRightAns);
+
+//class="d-none" tolto da  id="input-group"
