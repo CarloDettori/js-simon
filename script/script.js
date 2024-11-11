@@ -13,5 +13,14 @@ while (extration < 5) {
 }
 console.log(extration)
 
+//definizione trigger di scelta dei numeri scelti dall'user
+let check = document.querySelector("button");
+let imput = document.querySelectorAll("imput")
+check.addEventListener("click", function (event) {
+    for (let i = 0; i < 5; i++)
+        userGuess.push(imput[i].value);
+})
+console.log(userGuess)
+
 
 
