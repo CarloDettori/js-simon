@@ -7,9 +7,15 @@ let userGuess = [];
 // array vuoto per i numeri indovinati
 let userRightAns = [];
 
+
 // ciclo per definire i numeri estratti
-while (extration < 5) {
-    extration.push(generaNumeroRandom(1, 100));
+while (extration.length < 5) {
+    let i = 0
+    if (extration.includes(userGuess[i])) {
+    } else {
+        extration.push(generaNumeroRandom(1, 100));
+        i++;
+    }
 }
 console.log(extration)
 
@@ -24,8 +30,12 @@ console.log(userGuess)
 
 //ciclo per confrontare i numeri scelti con i numeri estratti
 for (let i = 0; i < 5; i++) {
-    if (extration.includes(userGuess[i]))
+    if (extration.includes(userGuess[i])) {
+
+    } else {
         userRightAns.push(userGuess[i])
+    }
+
 }
 
 console.log(userRightAns);

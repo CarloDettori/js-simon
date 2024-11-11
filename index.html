@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>Simon Says</title>
 
   <!-- Bootstrap -->
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css'
@@ -16,16 +16,19 @@
 </head>
 
 <body>
+  <script src="script/utility.js"></script>
   <div class="d-flex vh-100 w-50 m-auto d-flex justify-content-center align-items-center flex-column">
     <!-- Countdown -->
     <div id="countdown" class="fs-1 fw-bolder"></div>
     <p id="instructions">Memorizza i numeri entro il tempo limite!</p>
 
     <!-- Numbers -->
-    <ul id="numbers-list" class="d-flex gap-5 list-unstyled"></ul>
+    <ul id="numbers-list" class="d-flex gap-5 list-unstyled">
+
+    </ul>
 
     <!-- Form -->
-    <form id="answers-form">
+    <form id="answers-form" class="d-none">
       <div class="d-flex gap-5" id="input-group">
         <input type="number" class="form-control" min="1" max="100" required>
         <input type="number" class="form-control" min="1" max="100" required>
@@ -39,7 +42,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="script/utility.js"></script>
+
   <script src="script/script.js"></script>
 </body>
 
