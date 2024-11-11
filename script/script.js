@@ -1,43 +1,50 @@
 // array vuoto per in numeri randomizzati
-let extration = [];
+let extractionList = [];
 
 // array vuoto per i numeri scelti dal user
-let userGuess = [];
+let userGuessList = [];
 
 // array vuoto per i numeri indovinati
-let userRightAns = [];
+let userRightAnsList = [];
 
 
 // ciclo per definire i numeri estratti
-while (extration.length < 5) {
-    let i = 0
-    if (extration.includes(userGuess[i])) {
-    } else {
-        extration.push(generaNumeroRandom(1, 100));
-        i++;
+let extractionButton = document.getElementById("extraction");
+function extractionTrigger() {
+    while (extractionList.length < 5) {
+        let i = 0
+        if (extractionList.includes(userGuessList[i])) {
+        } else {
+            extractionList.push(generaNumeroRandom(1, 100));
+            i++;
+        }
     }
+    let extrationBox = document.getElementById("numbers-list")
+
 }
-console.log(extration)
+extractionButton.addEventListener("click", extractionTrigger)
+
+
+console.log(extractionList)
 
 //definizione trigger di scelta dei numeri scelti dall'user
-let check = document.querySelector("button");
+let submitButton = document.getElementById("submitB");
 let imput = document.querySelectorAll("imput")
-check.addEventListener("click", function (event) {
+submitButton.addEventListener("click", function (event) {
     for (let i = 0; i < 5; i++)
-        userGuess.push(imput[i].value);
-})
-console.log(userGuess)
-
-//ciclo per confrontare i numeri scelti con i numeri estratti
-for (let i = 0; i < 5; i++) {
-    if (extration.includes(userGuess[i])) {
-
-    } else {
-        userRightAns.push(userGuess[i])
+        userGuessList.push(imput[i].value);
+    //ciclo per confrontare i numeri scelti con i numeri estratti
+    for (let i = 0; i < 5; i++) {
+        if (extractionList.includes(userGuessList[i])) {
+            userRightAnsList.push(userGuessList[i])
+        }
     }
+})
+console.log(userGuessList)
 
-}
 
-console.log(userRightAns);
+
+
+console.log(userRightAnsList);
 
 //class="d-none" tolto da  id="input-group"
