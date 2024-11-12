@@ -15,8 +15,8 @@ function extractionTrigger() {
     let extractionBox = document.getElementById("numbers-list")
     let countdownBox = document.getElementById("countdown")
     countdownBox.innerHTML = `<h1 id="timer"></h1>`
+    let i = 0;
     while (extractionList.length < 5) {
-        let i = 0;
         if (extractionList.includes(userGuessList[i])) {
         } else {
             extractionList.push(generaNumeroRandom(1, 100));
@@ -38,7 +38,7 @@ function extractionTrigger() {
             formBox.classList.remove("d-none")
 
         } else {
-            timer.innerHTML = timerValue--;
+            timer.innerHTML = --timerValue;
         }
     }
     const timerInterval = setInterval(subtract1Second, 1000)
@@ -49,13 +49,14 @@ extractionButton.addEventListener("click", extractionTrigger)
 
 //console.log(extractionList)
 
-//definizione trigger di scelta dei numeri scelti dall'user
+//definizione trigger di scelta dei numeri scelti dall'user e comparsa messaggio dei risultati
 let submitButton = document.getElementById("submitB");
 let imput = document.querySelectorAll("imput")
 let resultText = document.getElementById("message")
 submitButton.addEventListener("click", function (event) {
+    event.preventDefault();
     for (let i = 0; i < 5; i++)
-        userGuessList.push(imput[i].value);
+        userGuessList.push(imput.value);
     //ciclo per confrontare i numeri scelti con i numeri estratti
     for (let i = 0; i < 5; i++) {
         if (extractionList.includes(userGuessList[i])) {
@@ -63,9 +64,10 @@ submitButton.addEventListener("click", function (event) {
         }
     }
     resultText.classList.add("d-block")
-    resultText.innerHTML = `Hai indovinato ${userRightAnsList.length} numeri!`
+    resultText.innerText = `Hai indovinato ${userRightAnsList.length} numeri!`
+    console.log(userRightAnsList)
 })
-//console.log(userGuessList)
+//console.log(userRightAnsList)
 
 
 
