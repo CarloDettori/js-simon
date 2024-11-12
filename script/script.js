@@ -36,7 +36,8 @@ function extractionTrigger() {
             timer.classList.add("d-none");
             extractionBox.classList.add("d-none")
             formBox.classList.remove("d-none")
-
+            let newText = document.getElementById("instructions")
+            newText.innerText = "Scrivi i numeri"
         } else {
             timer.innerHTML = --timerValue;
         }
@@ -51,21 +52,26 @@ extractionButton.addEventListener("click", extractionTrigger)
 
 //definizione trigger di scelta dei numeri scelti dall'user e comparsa messaggio dei risultati
 let submitButton = document.getElementById("submitB");
-let imput = document.querySelectorAll("imput")
+
 let resultText = document.getElementById("message")
 submitButton.addEventListener("click", function (event) {
     event.preventDefault();
-    for (let i = 0; i < 5; i++)
-        userGuessList.push(imput.value);
+    let imputList = document.querySelectorAll
+        ("input")
+    console.log(imputList)
+    for (let i = 0; i < 5; i++) {
+        userGuessList.push(parseInt(imputList[i].value));
+    }
+    console.log(imputList)
     //ciclo per confrontare i numeri scelti con i numeri estratti
     for (let i = 0; i < 5; i++) {
-        if (extractionList.includes(userGuessList[i])) {
-            userRightAnsList.push(userGuessList[i])
+        if (extractionList.includes(parseInt(userGuessList[i]))) {
+            userRightAnsList.push(parseInt(userGuessList[i]))
         }
     }
     resultText.classList.add("d-block")
     resultText.innerText = `Hai indovinato ${userRightAnsList.length} numeri!`
-    console.log(userRightAnsList)
+    console.log(userGuessList, userRightAnsList)
 })
 //console.log(userRightAnsList)
 
